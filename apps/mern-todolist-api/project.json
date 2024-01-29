@@ -1,0 +1,53 @@
+{
+  "name": "mern-todolist-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/mern-todolist-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/mern-todolist-api",
+        "main": "apps/mern-todolist-api/src/main.js",
+        "tsConfig": "apps/mern-todolist-api/tsconfig.app.json",
+        "assets": ["apps/mern-todolist-api/src/assets"],
+        "webpackConfig": "apps/mern-todolist-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "mern-todolist-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "mern-todolist-api:build:development"
+        },
+        "production": {
+          "buildTarget": "mern-todolist-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/mern-todolist-api/jest.config.js"
+      }
+    }
+  },
+  "tags": []
+}
