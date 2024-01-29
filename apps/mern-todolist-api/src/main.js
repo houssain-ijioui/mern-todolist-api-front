@@ -2,20 +2,19 @@
  * This is not a production server yet!
  * This is only a minimal backend to get started.
  */
-import dotenv from 'dotenv';
-dotenv.config();
+import  {  config }  from 'dotenv';
+config()
 import express from 'express';
 import * as path from 'path';
 import notFoundError from './middlewares/notFoundError';
 import tasksRoutes from './routes/tasks.routes.';
-import Database from './config/db.config';
+import dataBase from './config/db.config';
 
 
 const app = express();
-console.log("MONGO", process.env.MONGO_URI)
 
 // connect to db
-const db = new Database(`${process.env.MONGO_URI}`)
+const db = new dataBase(`${process.env.MONGO_URI}`)
 db.connectionDb()
 
 
