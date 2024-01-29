@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-class dataBase  {
+class Database{
   constructor(url) {
     this.url = url
   }
@@ -15,4 +15,4 @@ class dataBase  {
   }
 }
 
-export default dataBase;
+export default Database;
