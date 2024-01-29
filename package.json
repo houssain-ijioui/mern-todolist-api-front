@@ -2,7 +2,9 @@
   "name": "@mern-todolist/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "dev":"concurrently \"nx serve mern-todolist-api\" \" nx serve mern-todolist \" "
+  },
   "private": true,
   "dependencies": {
     "@swc/helpers": "~0.5.2",
