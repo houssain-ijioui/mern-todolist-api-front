@@ -9,7 +9,7 @@ const createTask = async (req, res) => {
     const validationTask = validateTaskCreation(req.body);
     if (validationTask.error) {
       return res.status(400).send({
-        message: "validation failed",
+        message: "validation failed to create task",
         errors: validationTask.error.details
       })
     }
