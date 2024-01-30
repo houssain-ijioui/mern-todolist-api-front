@@ -6,7 +6,7 @@ const taskSchema = new mongoose.Schema({
         required: true
     },
     status: {
-        type: String
+        type: Boolean
     },
     description: {
         type: String
@@ -19,5 +19,6 @@ const taskSchema = new mongoose.Schema({
 })
 
 const Task = mongoose.model("Task", taskSchema);
+
 
 export default Task;
