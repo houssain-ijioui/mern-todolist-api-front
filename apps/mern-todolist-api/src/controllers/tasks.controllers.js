@@ -74,6 +74,34 @@ const getTaskById = async (req, res) => {
 }
 
 
+const deleteTask = async (req,res) => {
+  try {
+    const { id } = req.params;
+
+    // Find the task by ID
+    const task = await TaskModel.findById(id);
+
+    // Check if the task exists
+    if (!task) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+
+    // Soft delete by updating the deletedAt field
+    task.deletedAt = new Date();
+
+    // Save the updated task
+    await task.save();
+
+    res.json({ message: 'Task soft deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+
+
+
 
 const updateTask = async (req, res) => {
   const { title, status, description, deadline } = req.body;
@@ -87,9 +115,9 @@ const updateTask = async (req, res) => {
       deadline
     }
 
-    
+
     await TaskModel.findByIdAndUpdate(id, taskUpdate);
-    
+
     res.status(200).send({
       message: "Task Updated Successfully"
     })
@@ -101,12 +129,11 @@ const updateTask = async (req, res) => {
 }
 
 
-
 const tasksControllers = {
     getTaskById,
     createTask,
     updateTask,
-    getAllTasks
+    getAllTasks,
+    deleteTask
 }
-
 export default tasksControllers;
