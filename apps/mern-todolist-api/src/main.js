@@ -7,7 +7,7 @@ config()
 import express from 'express';
 import * as path from 'path';
 import notFoundError from './middlewares/notFoundError';
-import tasksRoutes from './routes/tasks.routes.';
+import tasksRoutes from './routes/tasks.routes.js';
 import dataBase from './config/db.config';
 
 
