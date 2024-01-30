@@ -10,7 +10,6 @@ import notFoundError from './middlewares/notFoundError';
 import tasksRoutes from './routes/tasks.routes';
 import Database from './config/db.config';
 
-
 const app = express();
 
 // connect to db
