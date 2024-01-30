@@ -7,7 +7,9 @@ class Database{
 
   async connectionDb() {
     try {
-      await mongoose.connect(this.url);
+      await mongoose.connect(this.url, {
+        dbName : process.env.DB_NAME
+      });
       console.log("connected to db");
     } catch (error) {
       console.log(error);

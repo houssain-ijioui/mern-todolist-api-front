@@ -1,21 +1,18 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-import  {  config }  from 'dotenv';
+import  { config }  from 'dotenv';
 config()
 import express from 'express';
 import * as path from 'path';
 import notFoundError from './middlewares/notFoundError';
-import tasksRoutes from './routes/tasks.routes.';
-import dataBase from './config/db.config';
+import Database from './config/db.config';
+import tasksRoutes from './routes/tasks.routes.js';
 
 
 const app = express();
-
 // connect to db
-const db = new dataBase(`${process.env.MONGO_URI}`)
-db.connectionDb()
+
+
+const db = new Database(process.env.MONGO_URI);
+db.connectionDb();
 
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
@@ -29,6 +26,6 @@ app.use(notFoundError);
 
 const port = process.env.PORT || 3333;
 const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
+  console.log(`Listening at http://localhost:${port}`);
 });
 server.on('error', console.error);
