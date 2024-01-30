@@ -1,8 +1,4 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-import  {  config }  from 'dotenv';
+import  { config }  from 'dotenv';
 config()
 import express from 'express';
 import * as path from 'path';
@@ -12,9 +8,8 @@ import dataBase from './config/db.config';
 
 
 const app = express();
-
 // connect to db
-const db = new dataBase(`${process.env.MONGO_URI}`)
+const db = new dataBase(process.env.MONGO_URI)
 db.connectionDb()
 
 
