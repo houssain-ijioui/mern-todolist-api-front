@@ -7,8 +7,8 @@ config();
 import express from 'express';
 import * as path from 'path';
 import notFoundError from './middlewares/notFoundError';
-import tasksRoutes from './routes/tasks.routes';
 import Database from './config/db.config';
+import tasksRoutes from './routes/tasks.routes.js';
 
 const app = express();
 
