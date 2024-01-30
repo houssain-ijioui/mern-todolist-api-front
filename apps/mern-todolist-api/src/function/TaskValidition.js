@@ -13,7 +13,6 @@ const validateTaskCreation = (data) => {
   return taskCreationValidationSchema.validate(data, { abortEarly: false });
 }
 
-
 module.exports = {
   validateTaskCreation,
 };

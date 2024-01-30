@@ -87,14 +87,7 @@ const updateTask = async (req, res) => {
       deadline
     }
 
-    const validationTask = validateTaskCreation(taskUpdate);
-
-    if (validationTask.errors) {
-      return res.status(400).send({
-        message: "validation failed to update task",
-        errors: validationTask.error.details
-      })
-    }
+    
     await TaskModel.findByIdAndUpdate(id, taskUpdate);
     
     res.status(200).send({
