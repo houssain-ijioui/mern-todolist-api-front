@@ -5,7 +5,7 @@ const taskSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    status: {
+    completed: {
         type: Boolean,
         default: false,
     },
@@ -13,6 +13,9 @@ const taskSchema = new mongoose.Schema({
         type: String
     },
     deadline: {
+        type: String
+    },
+    priority: {
         type: String
     },
     deleted: {
