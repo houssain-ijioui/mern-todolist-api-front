@@ -1,9 +1,12 @@
 import React from 'react'
+import IntroMain from '../components/IntroMain';
+import Navbar from '../components/Navbar';
 
 function Home() {
   return (
-    <div>
-      <h1>Home Page</h1>
+    <div className='min-h-screen'>
+      {/* <Navbar /> */}
+      <IntroMain />
     </div>
   )
 }

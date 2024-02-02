@@ -42,3 +42,6 @@ Thumbs.db
 
 # Environement
 .env
+
+# Contentlayer
+.contentlayer
