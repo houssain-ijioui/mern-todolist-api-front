@@ -5,6 +5,7 @@ import * as path from 'path';
 import notFoundError from './middlewares/notFoundError';
 import Database from './config/db.config';
 import tasksRoutes from './routes/tasks.routes.js';
+import cors from 'cors'
 
 const app = express();
 // connect to db
@@ -16,6 +17,8 @@ db.connectionDb();
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use(express.json());
+
+app.use(cors());
 
 // tasks
 app.use('/api/tasks', tasksRoutes);
