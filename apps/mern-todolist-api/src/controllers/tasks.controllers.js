@@ -22,7 +22,7 @@ const getAllTasks = async (req, res) => {
 
 
 const createTask = async (req, res) => {
-  const {title , status, description, deadline, priority } = req.body;
+  const {title , completed, description, deadline, priority } = req.body;
   try {
     const validationTask = validateTaskCreation(req.body);
     if (validationTask.error) {
@@ -34,7 +34,7 @@ const createTask = async (req, res) => {
     await TaskModel.create(
       {
           title: title,
-          status: status,
+          completed: completed,
           description: description,
           priority: priority,
           deadline: deadline
@@ -104,15 +104,16 @@ const deleteTask = async (req,res) => {
 
 
 const updateTask = async (req, res) => {
-  const { title, status, description, deadline } = req.body;
+  const { title, completed, description, deadline, priority } = req.body;
   const { id } = req.params;
 
   try {
     const taskUpdate = {
       title,
-      status,
+      completed,
       description,
-      deadline
+      deadline,
+      priority
     }
 
 

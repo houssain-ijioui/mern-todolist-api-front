@@ -20,7 +20,7 @@ function AllTasks() {
 
 
   return (
-    <div className="overflow-x-auto w-11/12 m-auto bg-gray-500 rounded-lg mt-20 py-10">
+    <div className="overflow-x-auto w-11/12 m-auto bg-gray-500 rounded-lg mt-10 py-10">
       <AddTaskButton />
       <Table className='w-11/12 m-auto'>
         <Table.Head>
