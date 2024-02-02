@@ -3,10 +3,12 @@ const Joi = require('joi');
 
 const taskCreationValidationSchema = Joi.object({
     title: Joi.string().required(),
+    priority: Joi.string(),
     status: Joi.string(),
     description: Joi.string(),
     deadline: Joi.string(),
 })
+
 
 
 const validateTaskCreation = (data) => {

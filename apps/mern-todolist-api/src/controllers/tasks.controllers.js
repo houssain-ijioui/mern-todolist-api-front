@@ -22,7 +22,7 @@ const getAllTasks = async (req, res) => {
 
 
 const createTask = async (req, res) => {
-  const {title , status, description, deadline } = req.body;
+  const {title , status, description, deadline, priority } = req.body;
   try {
     const validationTask = validateTaskCreation(req.body);
     if (validationTask.error) {
@@ -36,6 +36,7 @@ const createTask = async (req, res) => {
           title: title,
           status: status,
           description: description,
+          priority: priority,
           deadline: deadline
       }
 
@@ -126,6 +127,7 @@ const updateTask = async (req, res) => {
     })
   }
 }
+
 
 
 const tasksControllers = {
