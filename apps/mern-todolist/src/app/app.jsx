@@ -3,6 +3,7 @@ import styles from './app.module.css';
 import Home from '../pages/Home.jsx';
 import { Route, Routes } from 'react-router-dom';
 import TasksMain from '../pages/TasksMain.jsx';
+import TaskForm from '../pages/TaskForm';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/tasks' element={<TasksMain />} />
+        <Route path='/addTask' element={<TaskForm />} />
       </Routes>
     </div>
   );

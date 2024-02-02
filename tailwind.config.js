@@ -15,15 +15,18 @@ module.exports = {
     require('flowbite/plugin'),
   ],
   theme: {
-    colors: {
-      customblue: "#2b1887",
-      textWhite: "#ffffff",
-      bgWhite: "#ffffff",
-      bgRed: "#e42c5f",
-      textBlack: "#000000",
-      iconBg: "#735efa",
-      dayGrayBg: "#d9d9d9",
-      cardBg: "#f5f2ff"
+    extend : {
+      colors: {
+        customblue: "#2b1887",
+        textWhite: "#ffffff",
+        bgWhite: "#ffffff",
+        bgRed: "#e42c5f",
+        textBlack: "#000000",
+        iconBg: "#735efa",
+        dayGrayBg: "#d9d9d9",
+        cardBg: "#f5f2ff",
+        borderColor: "#d5cdff"
+      }
     }
   }
 
