@@ -33,11 +33,12 @@ function AllTasks() {
           <Table.HeadCell className='bg-stone-900 text-white'>Dedaline</Table.HeadCell>
           <Table.HeadCell className='bg-stone-900 text-white'>Priority</Table.HeadCell>
           <Table.HeadCell className='bg-stone-900 text-white'>Status</Table.HeadCell>
+          <Table.HeadCell className='bg-stone-900 text-white'></Table.HeadCell>
         </Table.Head>
         <Table.Body>
           {tasks.map((task, index) => {
             return (
-              <TableTaskRow key={index} title={task.title} deadline={task.deadline} priority={task.priority} completed={task.completed} id={task._id} />
+              <TableTaskRow key={index} title={task.title} deadline={task.deadline} priority={task.priority} completed={task.completed} id={task._id} getTasks={getTasks} />
             )
           })}
         </Table.Body>
