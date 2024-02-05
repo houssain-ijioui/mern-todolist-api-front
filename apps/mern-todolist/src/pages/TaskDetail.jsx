@@ -2,11 +2,10 @@ import React from 'react'
 
 function TaskDetail() {
   return (
-    <div>
-      <h1>TaskDetail</h1>
-      <button>Update</button>
+    <div className='overflow-x-auto w-11/12 m-auto bg-gray-500 rounded-lg mt-10 py-10'>
+      
     </div>
   )
 }
 
-export default TaskDetail
+export default TaskDetail;
