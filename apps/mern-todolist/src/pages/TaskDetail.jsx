@@ -41,7 +41,7 @@ function TaskDetail() {
         <h1 className='text-white'>{task.title}</h1>
         <p className='mt-10 text-white opacity-80'>{task.description}</p>
         <div className='mt-10'>
-          <button className={`text-white p-1 rounded-lg font-medium ${priorityColor[task.priority]} mr-5`}>{task.priority}</button>
+          <button className={`text-white p-1 py-2 rounded-lg font-medium ${priorityColor[task.priority]} mr-5`}>{task.priority}</button>
           <button className={`text-white p-1 py-2 rounded-lg font-medium ${statusClassColor}`} onClick={() => {
             handleStatusToggle(selectedStatus, id, setTask, setSelectedStatus)
           }}>{selectedStatus}</button>
