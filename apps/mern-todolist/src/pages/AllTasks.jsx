@@ -6,22 +6,27 @@ import AddTaskButton from '../components/AddTaskButton';
 
 
 function AllTasks() {
+  const [formSubmitted, setFormSubmitted] = useState(false);
   const [ tasks, setTasks ] = useState([]);
 
   const getTasks = useCallback(async () => {
-    const tasks = await axios.get("http://localhost:8000/api/tasks")
-    setTasks(tasks.data);
-  })
+    try {
+      const tasks  = await axios.get("http://localhost:8000/api/tasks");
+      setTasks(tasks .data);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  }, [])
 
   useEffect(() => {
     getTasks()
     console.log(tasks);
-  }, []);
+  }, [getTasks]);
 
 
   return (
     <div className="overflow-x-auto w-11/12 m-auto bg-gray-500 rounded-lg mt-10 py-10">
-      <AddTaskButton />
+      {!formSubmitted && <AddTaskButton setFormSubmitted={setFormSubmitted} />}
       <Table className='w-11/12 m-auto'>
         <Table.Head>
           <Table.HeadCell className='bg-stone-900 text-white'>Title</Table.HeadCell>
