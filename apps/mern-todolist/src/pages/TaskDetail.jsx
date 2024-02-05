@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import handleStatusToggle from "../utilities/handleStatusToggle";
+import Loader from '../components/Loader';
 
 
 function TaskDetail() {
@@ -10,6 +11,7 @@ function TaskDetail() {
 
   const [ task, setTask ] = useState('');
   const [ selectedStatus, setSelectedStatus ] = useState('')
+  const [ loading, setLoading ] = useState(true);
 
   const getTask = useCallback(async () => {
     try {
@@ -18,6 +20,8 @@ function TaskDetail() {
       setSelectedStatus(task.data.completed ? "Completed" : "Not Completed")
     } catch (error) {
       console.error('Error fetching task:', error);
+    } finally {
+      setLoading(false)
     }
   }, []);
 
@@ -31,6 +35,10 @@ function TaskDetail() {
     high: "bg-red-700",
     middle: "bg-amber-500"
    
+  }
+
+  if (loading) {
+    return <Loader />
   }
 
   const statusClassColor = task.completed  ?  "bg-lime-600" : "bg-cyan-700" ;

@@ -3,11 +3,13 @@ import { Table } from 'flowbite-react';
 import TableTaskRow from '../components/TableTaskRow';
 import axios from 'axios';
 import AddTaskButton from '../components/AddTaskButton';
+import Loader from '../components/Loader';
 
 
 function AllTasks() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [ tasks, setTasks ] = useState([]);
+  const [ loading, setLoading ] = useState(true);
 
   const getTasks = useCallback(async () => {
     try {
@@ -15,6 +17,8 @@ function AllTasks() {
       setTasks(tasks.data);
     } catch (error) {
       console.error('Error fetching tasks:', error);
+    } finally {
+      setLoading(false)
     }
   }, [])
 
@@ -22,6 +26,11 @@ function AllTasks() {
     getTasks()
     console.log(tasks);
   }, [getTasks]);
+
+
+  if (loading) {
+    return <Loader />
+  }
 
 
   return (
