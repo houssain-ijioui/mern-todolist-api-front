@@ -9,9 +9,12 @@ const TableTaskRow = ({ title, deadline, priority, completed }) => {
     low: "bg-lime-600",
     high: "bg-red-700",
     middle: "bg-amber-500"
+    low: "bg-lime-600",
+    high: "bg-red-700",
+    middle: "bg-amber-500"
   }
 
-  const statusClassColor = completed  ?  "bg-lime-600" : "bg-cyan-700" ; 
+  const statusClassColor = completed  ?  "bg-lime-600" : "bg-cyan-700" ;
 
 
   return (
