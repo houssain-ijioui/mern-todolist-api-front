@@ -12,7 +12,7 @@ function AllTasks() {
   const getTasks = useCallback(async () => {
     try {
       const tasks  = await axios.get("http://localhost:8000/api/tasks");
-      setTasks(tasks .data);
+      setTasks(tasks.data);
     } catch (error) {
       console.error('Error fetching tasks:', error);
     }
@@ -37,7 +37,7 @@ function AllTasks() {
         <Table.Body>
           {tasks.map((task, index) => {
             return (
-              <TableTaskRow key={index} title={task.title} deadline={task.deadline} priority={task.priority} completed={task.completed} />
+              <TableTaskRow key={index} title={task.title} deadline={task.deadline} priority={task.priority} completed={task.completed} id={task._id} />
             )
           })}
         </Table.Body>

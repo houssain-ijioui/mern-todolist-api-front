@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import TasksMain from '../pages/TasksMain.jsx';
 import TaskForm from '../pages/TaskForm';
 import AddTaskButton from '../components/AddTaskButton';
+import TaskDetail from '../pages/TaskDetail.jsx';
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
         <Route path='/tasks' element={<TasksMain />} />
         {/* <Route path='/addTask' element={<TaskForm />} /> */}
         <Route path='/addTask' element={<AddTaskButton />} />
-
+        <Route path='/task/:id' element={<TaskDetail />} />
       </Routes>
     </div>
   );
