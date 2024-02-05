@@ -51,7 +51,7 @@ const IntroMain = () => {
           <div className='flex justify-between items-center lg:flex-row flex-col gap-5 md:mr-5 lg:mr-0'>
             <img className='self-start hidden lg:block' src={handbg}  alt="" />
             <div>
-            <Link to={"/addTask"}
+            <Link to={"/tasks"}
               class="bg-bgRed px-4 py-2 rounded-md text-bgWhite font-normal text-xl transition duration-200 ease-in-out hover:bg-iconBg active:bg-dayGrayBg focus:outline-none">
               Create Tasks
             </Link>
