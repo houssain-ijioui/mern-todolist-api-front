@@ -21,6 +21,7 @@ const AddTaskButton = ({ setFormSubmitted, openModal, setOpenModal, getTasks }) 
     setPriority(e.target.value);
     console.log('Priority:', e.target.value);
   };
+  
 
 
   const handleClick = () => {
