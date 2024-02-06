@@ -49,9 +49,9 @@ function TaskDetail() {
       <div className='bg-stone-900 w-11/12 m-auto rounded-lg py-10 px-10'>
         <h1 className='text-white'>{task.title}</h1>
         <p className='mt-10 text-white opacity-80'>{task.description}</p>
-        <div className='mt-10'>
+        <div className='mt-10 flex gap-5'>
           <StatusButton text={task.priority} color={priorityColor[task.priority]} />
-          <StatusButton text={selectedStatus} color={`${statusClassColor} ml-2`} onClick={() => handleStatusToggle(selectedStatus, id, setTask, setSelectedStatus)} />
+          <StatusButton text={selectedStatus} color={`${statusClassColor}`} onClick={() => handleStatusToggle(selectedStatus, id, setTask, setSelectedStatus)} />
         </div>
         <p className='text-white mt-10'>to be finshed by: {task.deadline.split('T')[0]}</p>
       </div>
