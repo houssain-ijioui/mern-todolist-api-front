@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 
 const UpdateTaskModal =
 ({ openModal,setOpenModal,getTasks, id,title, deadline, priority, description,completed }) => {
+  console.log(openModal);
 
   const [taskTitle, setTitle] = useState(title);
   const [taskDescription, setDescription] = useState(description);
@@ -53,15 +54,12 @@ const UpdateTaskModal =
       },
     }).then(() => {
       getTasks();
-      setFormSubmitted(true);
     });
   };
 
 
-  const handleUpdate = async ( e) => {
-
+  const handleUpdate = async (e) => {
     e.preventDefault();
-
     try {
       const postData = {
         title : taskTitle,
