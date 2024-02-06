@@ -151,7 +151,6 @@ const UpdateTaskModal =
           <div>
           </div>
           <div className='w-full grid grid-cols-4 gap-4'>
-
             <Button onClick={() => {setOpenModal(false)}} type="submit" className='lg:col-span-2 col-span-full bg-iconBg'
             >Cancel</Button>
             <Button onClick={handleUpdate} type="submit" className='lg:col-span-2 col-span-full bg-iconBg'
