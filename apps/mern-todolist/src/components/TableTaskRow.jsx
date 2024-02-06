@@ -33,7 +33,7 @@ const TableTaskRow = ({ id,title, deadline, priority, completed, description, se
         <Table.Cell className='bg-stone-800 text-white'>
           <StatusButton text={completed ? "Completed" : "Not Completed"} color={statusClassColor} />
         </Table.Cell>
-        <Table.Cell className='bg-stone-800 text-white '>
+        <Table.Cell className='bg-stone-800 text-white flex gap-5'>
           <StatusButton text={"Update"} color={"bg-yellow-500"} onClick={() => setOpenModal(true)}  />
           <StatusButton text={"Delete"} color={"bg-red-700"} onClick={() => { handleDeleteBtn(title, getTasks, id)}} />
         </Table.Cell>
