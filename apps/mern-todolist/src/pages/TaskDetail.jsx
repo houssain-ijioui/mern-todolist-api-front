@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import handleStatusToggle from "../utilities/handleStatusToggle";
 import Loader from '../components/Loader';
+import StatusButton from '../components/StatusButton';
 
 
 function TaskDetail() {
@@ -49,10 +50,8 @@ function TaskDetail() {
         <h1 className='text-white'>{task.title}</h1>
         <p className='mt-10 text-white opacity-80'>{task.description}</p>
         <div className='mt-10'>
-          <button className={`text-white p-1 py-2 rounded-lg font-medium ${priorityColor[task.priority]} mr-5`}>{task.priority}</button>
-          <button className={`text-white p-1 py-2 rounded-lg font-medium ${statusClassColor}`} onClick={() => {
-            handleStatusToggle(selectedStatus, id, setTask, setSelectedStatus)
-          }}>{selectedStatus}</button>
+          <StatusButton text={task.priority} color={priorityColor[task.priority]} />
+          <StatusButton text={selectedStatus} color={statusClassColor} onClick={() => handleStatusToggle(selectedStatus, id, setTask, setSelectedStatus)} />
         </div>
         <p className='text-white mt-10'>to be finshed by: {task.deadline}</p>
       </div>

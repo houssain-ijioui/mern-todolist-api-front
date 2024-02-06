@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 import handleDeleteBtn from "../utilities/handleDeleteBtn";
+import StatusButton from './StatusButton';
 
 
 
@@ -25,15 +26,13 @@ const TableTaskRow = ({ title, deadline, priority, completed, id, getTasks }) =>
           </Link>
           <Table.Cell className='bg-stone-800 text-white'>{deadline}</Table.Cell>
           <Table.Cell className='bg-stone-800 text-white'>
-            <span className={`p-1 py-2 rounded-lg font-medium ${priorityColor[priority]}`}>{priority}</span>
+            <StatusButton text={priority} color={priorityColor[priority]} />
           </Table.Cell>
           <Table.Cell className='bg-stone-800 text-white'>
-            <span className={`p-1 py-2 rounded-lg font-medium ${statusClassColor}`}>{completed ? "Completed" : "Not Completed"}</span>
+            <StatusButton text={completed ? "Completed" : "Not Completed"} color={statusClassColor} />
           </Table.Cell>
           <Table.Cell className='bg-stone-800 text-white'>
-            <span className='p-1 py-2 rounded-lg font-medium bg-red-700 cursor-pointer'onClick={() => {
-              handleDeleteBtn(title, getTasks, id)
-            }}>Delete</span>
+            <StatusButton text={"Delete"} color={"bg-red-700"} onClick={() => { handleDeleteBtn(title, getTasks, id)}} />
           </Table.Cell>
         </Table.Row>
       <div className="border-t border-white"></div>
