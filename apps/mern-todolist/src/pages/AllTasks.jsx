@@ -24,9 +24,7 @@ function AllTasks() {
 
   useEffect(() => {
     getTasks()
-    console.log(tasks);
   }, [getTasks]);
-
 
   if (loading) {
     return <Loader />
