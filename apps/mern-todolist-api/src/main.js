@@ -5,7 +5,9 @@ import * as path from 'path';
 import notFoundError from './middlewares/notFoundError';
 import Database from './config/db.config';
 import tasksRoutes from './routes/tasks.routes.js';
-import cors from 'cors'
+import cors from 'cors';
+import swaggerUi from "swagger-ui-express";
+import specs from "./config/swagger";
 
 const app = express();
 // connect to db
@@ -22,6 +24,9 @@ app.use(cors());
 
 // tasks
 app.use('/api/tasks', tasksRoutes);
+
+// Serve Swagger UI at /api-docs
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 // handle non existing routes
 app.use(notFoundError);
