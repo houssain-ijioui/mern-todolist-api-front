@@ -53,7 +53,7 @@ function TaskDetail() {
           <StatusButton text={task.priority} color={priorityColor[task.priority]} />
           <StatusButton text={selectedStatus} color={statusClassColor} onClick={() => handleStatusToggle(selectedStatus, id, setTask, setSelectedStatus)} />
         </div>
-        <p className='text-white mt-10'>to be finshed by: {task.deadline}</p>
+        <p className='text-white mt-10'>to be finshed by: {task.deadline.split('T')[0]}</p>
       </div>
     </div>
   )
