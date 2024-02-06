@@ -2,11 +2,9 @@
 import { Button, Label, Modal, TextInput , Dropdown } from 'flowbite-react';
 import { useRef, useState } from 'react';
 import axios from 'axios';
-import Swal from 'sweetalert2'
-import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
-const AddTaskButton = ({ setFormSubmitted }) => {
-  const navigate = useNavigate();
+const AddTaskButton = ({ setFormSubmitted, openModal, setOpenModal, getTasks }) => {
   // State for form inputs
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("");
@@ -37,7 +35,6 @@ const AddTaskButton = ({ setFormSubmitted }) => {
       },
     }).then(() => {
       setFormSubmitted(true);
-      navigate('/tasks');
     });
   };
 
@@ -64,7 +61,9 @@ const AddTaskButton = ({ setFormSubmitted }) => {
             'Content-Type': 'application/json',
           },
         });
+        setOpenModal(false);
         handleClick();
+        getTasks();
         // Reset the form fields and close the modal if needed
         setTitle('');
         setDescription('');
@@ -80,33 +79,9 @@ const AddTaskButton = ({ setFormSubmitted }) => {
       }
   }
 
-
-  const [openModal, setOpenModal] = useState(false);
-  const emailInputRef = useRef<HTMLInputElement>(null);
-
   return (
     <>
-      <button
-        onClick={() => setOpenModal(true)}
-          className="m-auto group cursor-pointer outline-none hover:rotate-90 duration-300 ml-12"
-            title="Add New Task"
-          >
-            <svg
-            className="m-auto stroke-teal-500 fill-none group-hover:fill-teal-800 group-active:stroke-teal-200 group-active:fill-teal-600 group-active:duration-0 duration-300"
-            viewBox="0 0 24 24"
-            height="50px"
-            width="50px"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeWidth="1.5"
-              d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
-            ></path>
-            <path strokeWidth="1.5" d="M8 12H16"></path>
-            <path strokeWidth="1.5" d="M12 16V8"></path>
-          </svg>
-      </button>
-      <Modal  show={openModal} size="md" popup onClose={() => setOpenModal(false)} initialFocus={emailInputRef}>
+      <Modal  show={openModal} size="md" popup >
         <Modal.Header className='bg-slate-50' />
         <Modal.Body className='bg-slate-50 rounded-xl'>
         <div className=''>
@@ -151,9 +126,11 @@ const AddTaskButton = ({ setFormSubmitted }) => {
           </div>
           <div>
           </div>
-          <div className='w-full'>
+          <div className='w-full grid grid-cols-4 gap-4'>
 
-            <Button onClick={handleSubmit} type="submit" className='w-full bg-iconBg'
+            <Button onClick={() => {setOpenModal(false)}} type="submit" className='lg:col-span-2 col-span-full bg-iconBg'
+            >cancel</Button>
+            <Button onClick={handleSubmit} type="submit" className='lg:col-span-2 col-span-full bg-iconBg'
             >Create Task </Button>
           </div>
         </form>
