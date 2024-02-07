@@ -89,8 +89,8 @@ const UpdateTaskModal =
 
   return (
     <Modal  show={openModal}  size="md" popup >
-        <Modal.Header className='bg-slate-50' />
-        <Modal.Body className='bg-slate-50 rounded-xl'>
+
+        <Modal.Body className='bg-slate-50 rounded-xl pt-7'>
         <div className=''>
         <form onSubmit={() => {
           handleUpdate(id)
@@ -149,9 +149,9 @@ const UpdateTaskModal =
           <div>
           </div>
           <div className='w-full grid grid-cols-4 gap-4'>
-            <Button onClick={() => {setOpenModal(false)}} type="submit" className='lg:col-span-2 col-span-full bg-iconBg'
+            <Button onClick={() => {setOpenModal(false)}} type="submit" className='lg:col-span-2 col-span-full bg-red-700'
             >Cancel</Button>
-            <Button onClick={handleUpdate} type="submit" className='lg:col-span-2 col-span-full bg-iconBg'
+            <Button onClick={handleUpdate} type="submit" className='lg:col-span-2 col-span-full bg-lime-600'
             >Update Task </Button>
           </div>
         </form>

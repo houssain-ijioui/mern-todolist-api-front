@@ -81,9 +81,8 @@ const AddTaskButton = ({ openModal, setOpenModal, getTasks }) => {
 
   return (
     <>
-      <Modal  show={openModal} size="md" popup >
-        <Modal.Header className='bg-slate-50' />
-        <Modal.Body className='bg-slate-50 rounded-xl'>
+      <Modal  show={openModal} size="md" popup>
+        <Modal.Body className='bg-slate-50 rounded-xl pt-7'>
         <div className=''>
         <form onSubmit={handleSubmit} className="mx-auto text-customblue rounded-xl">
           <div>
@@ -128,9 +127,9 @@ const AddTaskButton = ({ openModal, setOpenModal, getTasks }) => {
           </div>
           <div className='w-full grid grid-cols-4 gap-4'>
 
-            <Button onClick={() => {setOpenModal(false)}} type="submit" className='lg:col-span-2 col-span-full bg-iconBg'
+            <Button onClick={() => {setOpenModal(false)}} type="submit" className='lg:col-span-2 col-span-full bg-red-700'
             >cancel</Button>
-            <Button onClick={handleSubmit} type="submit" className='lg:col-span-2 col-span-full bg-iconBg'
+            <Button onClick={handleSubmit} type="submit" className='lg:col-span-2 col-span-full bg-lime-600'
             >Create Task </Button>
           </div>
         </form>
