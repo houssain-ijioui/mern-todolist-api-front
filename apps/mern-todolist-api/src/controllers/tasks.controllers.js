@@ -34,7 +34,7 @@ const createTask = async (req, res) => {
     await TaskModel.create(
       {
           title: title,
-          completed: completed,
+          completed:completed,
           description: description,
           priority: priority,
           deadline: deadline
