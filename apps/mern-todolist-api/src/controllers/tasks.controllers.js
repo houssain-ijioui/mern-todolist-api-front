@@ -5,7 +5,11 @@ import TaskModel from "../models/task.model";
 
 const getAllTasks = async (req, res) => {
   try {
-    const tasks = await TaskModel.find();
+    if (req.query.status) {
+      const tasks = await TaskModel.find({ deleted: false, status: req.query.status });
+      return res.status(200).send(tasks)
+    }
+    const tasks = await TaskModel.find({ deleted: false });
     return res.status(200).send(tasks)
   } catch (error) {
     console.log(error);
@@ -16,8 +20,9 @@ const getAllTasks = async (req, res) => {
 }
 
 
+
 const createTask = async (req, res) => {
-  const {title , status, description, deadline } = req.body;
+  const {title , completed, description, deadline, priority } = req.body;
   try {
     const validationTask = validateTaskCreation(req.body);
     if (validationTask.error) {
@@ -29,8 +34,9 @@ const createTask = async (req, res) => {
     await TaskModel.create(
       {
           title: title,
-          status: status,
+          completed:completed,
           description: description,
+          priority: priority,
           deadline: deadline
       }
 
@@ -78,24 +84,18 @@ const deleteTask = async (req,res) => {
   try {
     const { id } = req.params;
 
-    // Find the task by ID
-    const task = await TaskModel.findById(id);
-
-    // Check if the task exists
-    if (!task) {
-      return res.status(404).json({ error: 'Task not found' });
+    const taskUpdate = {
+      deleted: true
     }
 
-    // Soft delete by updating the deletedAt field
-    task.deletedAt = new Date();
+    await TaskModel.findByIdAndUpdate(id, taskUpdate)
 
-    // Save the updated task
-    await task.save();
-
-    res.json({ message: 'Task soft deleted successfully' });
+    return res.status(200).send({
+      message: "Task deleted successufly"
+    });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: 'Oops something went wrong' });
   }
 }
 
@@ -104,15 +104,16 @@ const deleteTask = async (req,res) => {
 
 
 const updateTask = async (req, res) => {
-  const { title, status, description, deadline } = req.body;
+  const { title, completed, description, deadline, priority } = req.body;
   const { id } = req.params;
 
   try {
     const taskUpdate = {
       title,
-      status,
+      completed,
       description,
-      deadline
+      deadline,
+      priority
     }
 
 
@@ -127,6 +128,7 @@ const updateTask = async (req, res) => {
     })
   }
 }
+
 
 
 const tasksControllers = {

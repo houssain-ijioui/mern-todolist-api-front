@@ -5,14 +5,22 @@ const taskSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    status: {
-        type: String
+    completed: {
+        type: Boolean,
     },
     description: {
         type: String
     },
     deadline: {
-        type: String
+        type: Date
+    },
+    priority: {
+        type: String,
+        enum: ['low', 'middle', 'high']
+    },
+    deleted: {
+        type: Boolean,
+        default: false
     }
 }, {
     timestamps: true

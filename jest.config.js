@@ -1,5 +1,8 @@
-const { getJestProjects } = require('@nx/jest');
-
 module.exports = {
-  projects: getJestProjects(),
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\.js$': 'babel-jest',
+  },
+  moduleNameMapper: {},
+  testMatch: ['<rootDir>/apps/mern-todolist-api-e2e/src/**/*.spec.js'],
 };
