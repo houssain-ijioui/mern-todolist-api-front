@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "concurrently \"nx serve mern-todolist-api\" \"nx serve mern-todolist\"",
-    "test": "jest"
+    "test": "jest",
+    "build": "nx build mern-todolist"
   },
   "private": true,
   "dependencies": {
